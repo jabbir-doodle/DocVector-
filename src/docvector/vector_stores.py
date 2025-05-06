@@ -3,7 +3,7 @@ Vector store implementations for document storage and retrieval.
 """
 
 from abc import ABC, abstractmethod
-from typing import List, Optional, Dict, Any
+from typing import List, Optional, Dict, Any, Tuple
 from .types import Document, Chunk
 
 class BaseVectorStore(ABC):
@@ -129,4 +129,57 @@ class MilvusStore(BaseVectorStore):
     def clear(self) -> None:
         """Clear all documents from Milvus."""
         # TODO: Implement Milvus collection clearing
-        pass 
+        pass
+
+class PineconeStore(BaseVectorStore):
+    """Pinecone vector store implementation."""
+    
+    def __init__(self, api_key: str, environment: str, index_name: str):
+        """
+        Initialize Pinecone vector store.
+        
+        Args:
+            api_key (str): Pinecone API key
+            environment (str): Pinecone environment (e.g., 'us-west1-gcp')
+            index_name (str): Name of the Pinecone index
+        """
+        try:
+            import pinecone
+            pinecone.init(api_key=api_key, environment=environment)
+            self.index = pinecone.Index(index_name)
+        except ImportError:
+            raise ImportError("Please install pinecone-client: pip install pinecone-client")
+    
+    def add_document(self, document: Document) -> None:
+        """Add a document to Pinecone."""
+        vectors = []
+        for i, chunk in enumerate(document.chunks):
+            if chunk.embedding is not None:
+                vector_id = f"{document.metadata.source}_{i}"
+                metadata = {
+                    "title": document.metadata.title,
+                    "source": document.metadata.source,
+                    "content_type": document.metadata.content_type,
+                    "chunk_index": i,
+                    "text": chunk.text
+                }
+                vectors.append((vector_id, chunk.embedding, metadata))
+        
+        if vectors:
+            self.index.upsert(vectors=vectors)
+    
+    def search(self, query: str, top_k: int = 3) -> List[Tuple[Document, float]]:
+        """Search for similar documents in Pinecone."""
+        # Note: In a real implementation, you would need to embed the query first
+        # This is a placeholder implementation
+        results = []
+        return results
+    
+    def delete_document(self, document_id: str) -> None:
+        """Delete a document from Pinecone."""
+        # Delete all vectors with the document prefix
+        self.index.delete(filter={"source": document_id})
+    
+    def clear(self) -> None:
+        """Clear all documents from Pinecone."""
+        self.index.delete(delete_all=True) 

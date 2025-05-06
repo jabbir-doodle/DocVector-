@@ -16,6 +16,11 @@ class Config:
     MISTRAL_API_KEY: Optional[str] = os.getenv("MISTRAL_API_KEY")
     MISTRAL_MODEL: str = os.getenv("MISTRAL_MODEL", "mistral-embed")
     
+    # Pinecone settings
+    PINECONE_API_KEY: Optional[str] = os.getenv("PINECONE_API_KEY")
+    PINECONE_ENVIRONMENT: str = os.getenv("PINECONE_ENVIRONMENT", "us-west1-gcp")
+    PINECONE_INDEX: str = os.getenv("PINECONE_INDEX", "docvector")
+    
     # OpenAI settings
     OPENAI_API_KEY: Optional[str] = os.getenv("OPENAI_API_KEY")
     OPENAI_MODEL: str = os.getenv("OPENAI_MODEL", "text-embedding-ada-002")
@@ -42,4 +47,6 @@ class Config:
         if not cls.OPENAI_API_KEY:
             print("Warning: OPENAI_API_KEY not set")
         if not cls.COHERE_API_KEY:
-            print("Warning: COHERE_API_KEY not set") 
+            print("Warning: COHERE_API_KEY not set")
+        if not cls.PINECONE_API_KEY:
+            raise ValueError("PINECONE_API_KEY is required") 
