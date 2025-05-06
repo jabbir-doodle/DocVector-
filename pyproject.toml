@@ -14,16 +14,21 @@ authors = [
 ]
 dependencies = [
     "python-dotenv>=1.0.0",
-    "mistralai>=0.0.7",
-    "qdrant-client>=1.6.0",
-    "weaviate-client>=3.25.2",
-    "pymilvus>=2.3.0",
-    "pinecone-client>=2.2.4",
-    "python-magic>=0.4.27",
-    "PyPDF2>=3.0.0",
-    "python-docx>=0.8.11",
-    "beautifulsoup4>=4.12.0",
-    "markdown>=3.5.0",
+    "openai>=1.0.0",           # OpenAI embeddings
+    "mistralai>=0.0.7",        # Mistral embeddings
+    "deepseek>=0.1.0",         # DeepSeek embeddings
+    "pinecone-client>=2.2.4",  # Pinecone vector store
+    "qdrant-client>=1.6.0",    # Qdrant vector store
+    "weaviate-client>=3.25.2", # Weaviate vector store
+    "pymilvus>=2.3.0",         # Milvus vector store
+    "python-magic>=0.4.27",    # File type detection
+    "PyPDF2>=3.0.0",          # PDF processing
+    "python-docx>=0.8.11",     # Word document processing
+    "beautifulsoup4>=4.12.0",  # HTML processing
+    "markdown>=3.5.0",         # Markdown processing
+    "numpy>=1.24.0",           # Numerical operations
+    "tqdm>=4.65.0",           # Progress bars
+    "loguru>=0.7.0",          # Logging
 ]
 
 [project.urls]

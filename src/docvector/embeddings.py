@@ -1,18 +1,13 @@
 """
-Embedding models for document processing.
+Embedding models for document vectorization.
 """
 
 from abc import ABC, abstractmethod
 from typing import List, Optional
 import numpy as np
-from .types import Document, Chunk
 
 class BaseEmbeddings(ABC):
     """Base class for embedding models."""
-    
-    def __init__(self, model: str, dimension: int):
-        self.model = model
-        self.dimension = dimension
     
     @abstractmethod
     def embed_text(self, text: str) -> List[float]:
@@ -21,72 +16,138 @@ class BaseEmbeddings(ABC):
     
     @abstractmethod
     def embed_batch(self, texts: List[str]) -> List[List[float]]:
-        """Generate embeddings for a batch of texts."""
+        """Generate embeddings for multiple texts."""
         pass
 
+class OpenAIEmbeddings(BaseEmbeddings):
+    """OpenAI embeddings implementation."""
+    
+    def __init__(self, api_key: str, model: str = "text-embedding-3-small"):
+        """
+        Initialize OpenAI embeddings.
+        
+        Args:
+            api_key (str): OpenAI API key
+            model (str): Model name (text-embedding-3-small or text-embedding-3-large)
+        """
+        try:
+            from openai import OpenAI
+            self.client = OpenAI(api_key=api_key)
+            self.model = model
+        except ImportError:
+            raise ImportError("Please install openai: pip install openai")
+    
+    def embed_text(self, text: str) -> List[float]:
+        """Generate embeddings for a single text using OpenAI."""
+        response = self.client.embeddings.create(
+            model=self.model,
+            input=text,
+            encoding_format="float"
+        )
+        return response.data[0].embedding
+    
+    def embed_batch(self, texts: List[str]) -> List[List[float]]:
+        """Generate embeddings for multiple texts using OpenAI."""
+        response = self.client.embeddings.create(
+            model=self.model,
+            input=texts,
+            encoding_format="float"
+        )
+        return [data.embedding for data in response.data]
+
 class MistralEmbeddings(BaseEmbeddings):
-    """Mistral AI embeddings model."""
+    """Mistral AI embeddings implementation."""
     
     def __init__(self, api_key: str, model: str = "mistral-embed"):
-        super().__init__(model=model, dimension=1024)  # Mistral's embedding dimension
-        self.api_key = api_key
+        """
+        Initialize Mistral embeddings.
+        
+        Args:
+            api_key (str): Mistral AI API key
+            model (str): Model name
+        """
+        try:
+            from mistralai.client import MistralClient
+            from mistralai.models.chat_completion import ChatMessage
+            self.client = MistralClient(api_key=api_key)
+            self.model = model
+        except ImportError:
+            raise ImportError("Please install mistralai: pip install mistralai")
     
     def embed_text(self, text: str) -> List[float]:
-        """Generate embeddings using Mistral AI's API."""
-        # TODO: Implement actual Mistral AI API call
-        # For now, return random embeddings
-        return list(np.random.randn(self.dimension))
+        """Generate embeddings for a single text using Mistral."""
+        response = self.client.embeddings(
+            model=self.model,
+            input=[text]
+        )
+        return response.data[0].embedding
     
     def embed_batch(self, texts: List[str]) -> List[List[float]]:
-        """Generate embeddings for a batch of texts."""
-        return [self.embed_text(text) for text in texts]
+        """Generate embeddings for multiple texts using Mistral."""
+        response = self.client.embeddings(
+            model=self.model,
+            input=texts
+        )
+        return [data.embedding for data in response.data]
 
-class OpenAIEmbeddings(BaseEmbeddings):
-    """OpenAI embeddings model."""
+class DeepSeekEmbeddings(BaseEmbeddings):
+    """DeepSeek embeddings implementation."""
     
-    def __init__(self, api_key: str, model: str = "text-embedding-ada-002"):
-        super().__init__(model=model, dimension=1536)  # OpenAI's ada-002 has 1536 dimensions
-        self.api_key = api_key
+    def __init__(self, api_key: str, model: str = "deepseek-embed"):
+        """
+        Initialize DeepSeek embeddings.
+        
+        Args:
+            api_key (str): DeepSeek API key
+            model (str): Model name
+        """
+        try:
+            import deepseek
+            self.client = deepseek.Client(api_key=api_key)
+            self.model = model
+        except ImportError:
+            raise ImportError("Please install deepseek: pip install deepseek")
     
     def embed_text(self, text: str) -> List[float]:
-        """Generate embeddings using OpenAI's API."""
-        # TODO: Implement actual OpenAI API call
-        # For now, return random embeddings
-        return list(np.random.randn(self.dimension))
+        """Generate embeddings for a single text using DeepSeek."""
+        response = self.client.embeddings.create(
+            model=self.model,
+            input=text
+        )
+        return response.embeddings[0]
     
     def embed_batch(self, texts: List[str]) -> List[List[float]]:
-        """Generate embeddings for a batch of texts."""
-        return [self.embed_text(text) for text in texts]
+        """Generate embeddings for multiple texts using DeepSeek."""
+        response = self.client.embeddings.create(
+            model=self.model,
+            input=texts
+        )
+        return response.embeddings
 
-class SentenceTransformerEmbeddings(BaseEmbeddings):
-    """Sentence Transformer embeddings model."""
+class EmbeddingFactory:
+    """Factory class for creating embedding instances."""
     
-    def __init__(self, model: str = "all-MiniLM-L6-v2"):
-        super().__init__(model=model, dimension=384)  # MiniLM has 384 dimensions
-    
-    def embed_text(self, text: str) -> List[float]:
-        """Generate embeddings using Sentence Transformers."""
-        # TODO: Implement actual Sentence Transformer model
-        # For now, return random embeddings
-        return list(np.random.randn(self.dimension))
-    
-    def embed_batch(self, texts: List[str]) -> List[List[float]]:
-        """Generate embeddings for a batch of texts."""
-        return [self.embed_text(text) for text in texts]
-
-class CohereEmbeddings(BaseEmbeddings):
-    """Cohere embeddings model."""
-    
-    def __init__(self, api_key: str, model: str = "embed-english-v3.0"):
-        super().__init__(model=model, dimension=1024)  # Cohere's v3 has 1024 dimensions
-        self.api_key = api_key
-    
-    def embed_text(self, text: str) -> List[float]:
-        """Generate embeddings using Cohere's API."""
-        # TODO: Implement actual Cohere API call
-        # For now, return random embeddings
-        return list(np.random.randn(self.dimension))
-    
-    def embed_batch(self, texts: List[str]) -> List[List[float]]:
-        """Generate embeddings for a batch of texts."""
-        return [self.embed_text(text) for text in texts] 
+    @staticmethod
+    def create(provider: str, api_key: str, model: Optional[str] = None) -> BaseEmbeddings:
+        """
+        Create an embedding instance based on the provider.
+        
+        Args:
+            provider (str): Provider name ('openai', 'mistral', or 'deepseek')
+            api_key (str): API key for the provider
+            model (str, optional): Model name
+        
+        Returns:
+            BaseEmbeddings: An instance of the embedding class
+        """
+        providers = {
+            'openai': (OpenAIEmbeddings, "text-embedding-3-small"),
+            'mistral': (MistralEmbeddings, "mistral-embed"),
+            'deepseek': (DeepSeekEmbeddings, "deepseek-embed")
+        }
+        
+        if provider not in providers:
+            raise ValueError(f"Unsupported provider: {provider}. Choose from {list(providers.keys())}")
+        
+        EmbeddingClass, default_model = providers[provider]
+        return EmbeddingClass(api_key=api_key, model=model or default_model) 
