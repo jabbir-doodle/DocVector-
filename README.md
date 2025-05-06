@@ -2,6 +2,24 @@
 
 DocVector is an autonomous document processing agent that leverages multiple LLM providers to transform, analyze, and search through documents intelligently.
 
+# DocVector: Intelligent Document Processing Agent
+
+[![Architecture Diagram](architecture.svg)](index.html)
+
+DocVector is an autonomous document‐processing agent that leverages multiple LLM providers to transform, analyze, and search through documents intelligently.
+
+---
+
+## 📐 Architecture Diagram
+
+Click the diagram below to launch the full interactive, animated SVG in your browser:
+
+[![DocVector Architecture](architecture.svg)](index.html)
+
+Or open `index.html` directly to see the live GSAP–powered animation.
+
+---
+
 ## Key Features
 
 - **Autonomous Document Processing**
