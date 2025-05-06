@@ -1,33 +1,30 @@
-# DocVector
+# DocVector: Intelligent Document Processing Agent
 
-Intelligent Document Processing & Vector Database Integration System
+DocVector is an autonomous document processing agent that leverages multiple LLM providers to transform, analyze, and search through documents intelligently.
 
-## Overview
+## Key Features
 
-DocVector is a powerful document processing and vector database integration system that enables efficient document ingestion, processing, and semantic search capabilities. It provides a unified interface for working with various document types and vector databases.
+- **Autonomous Document Processing**
+  - Intelligent text chunking
+  - Multi-format support (PDF, DOCX)
+  - Automatic metadata extraction
 
-## Features
+- **Multi-Provider LLM Integration**
+  - Mistral AI
+  - OpenAI
+  - DeepSeek
+  - Easy to extend with new providers
 
-- **Document Processing**
-  - Support for multiple document formats (PDF, DOCX, TXT, etc.)
-  - Intelligent text extraction and cleaning
-  - Metadata extraction and management
+- **Flexible Vector Storage**
+  - Pinecone
+  - Qdrant
+  - Weaviate
+  - Extensible storage interface
 
-- **Vector Database Integration**
-  - Support for multiple vector databases (Qdrant, Weaviate, Milvus)
-  - Efficient document indexing and retrieval
-  - Semantic search capabilities
-
-- **Embedding Models**
-  - Multiple embedding model support (OpenAI, Sentence Transformers, Cohere)
-  - Custom embedding model integration
-  - Batch processing capabilities
-
-- **Chunking Strategies**
-  - Semantic chunking
-  - Code-aware chunking
-  - Token-based chunking
-  - Custom chunking strategies
+- **Intelligent Search Capabilities**
+  - Semantic search
+  - Similarity matching
+  - Context-aware retrieval
 
 ## Installation
 
@@ -38,22 +35,30 @@ pip install docvector
 ## Quick Start
 
 ```python
-from docvector import DocumentProcessor, VectorStore
+from docvector import DocumentProcessor, MistralEmbeddings, PineconeStore
 
-# Initialize document processor
-processor = DocumentProcessor()
+# Initialize the agent
+processor = DocumentProcessor(
+    embeddings=MistralEmbeddings(),
+    vector_store=PineconeStore()
+)
 
 # Process a document
-doc = processor.process("path/to/document.pdf")
+document = processor.process_document("path/to/document.pdf")
 
-# Initialize vector store
-store = VectorStore("qdrant")
+# Search for similar content
+results = processor.search("your query here")
+```
 
-# Store document
-store.add_document(doc)
+## Configuration
 
-# Search similar documents
-results = store.search("query text", limit=5)
+Create a `.env` file with your API keys:
+
+```env
+MISTRAL_API_KEY=your_mistral_key
+OPENAI_API_KEY=your_openai_key
+DEEPSEEK_API_KEY=your_deepseek_key
+PINECONE_API_KEY=your_pinecone_key
 ```
 
 ## Documentation
@@ -66,4 +71,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
+This project is licensed under the MIT License - see the LICENSE file for details. 
