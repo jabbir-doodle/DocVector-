@@ -2,163 +2,192 @@
 <svg viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
   <!-- Background -->
   <rect width="1000" height="800" fill="#f8f9fa" />
+  
   <!-- Watermark -->
-  <text x="500" y="780" font-family="Arial, sans-serif" font-size="18" font-weight="bold"
-        font-style="italic" text-anchor="middle" fill="#1a237e" opacity="0.7">Jabbir Basha</text>
-
+  <text x="500" y="780" font-family="Arial, sans-serif" font-size="18" font-weight="bold" font-style="italic" text-anchor="middle" fill="#1a237e" opacity="0.7">Jabbir Basha</text>
+  
+  <!-- Title -->
+  <text x="500" y="50" font-family="Arial, sans-serif" font-size="30" font-weight="bold" text-anchor="middle" fill="#1a237e">DocVector System Architecture</text>
+  
   <!-- Document Input Section -->
-  <rect id="document-sources" x="50" y="100" width="200" height="180" rx="10" ry="10"
-        fill="#bbdefb" stroke="#2196f3" stroke-width="2" class="section" />
-  <text x="150" y="130" font-family="Arial, sans-serif" font-size="18" font-weight="bold"
-        text-anchor="middle">Document Sources</text>
-  <g id="document-icons">
-    <rect x="80"  y="150" width="40" height="50" fill="#90caf9" stroke="#1976d2" stroke-width="1" />
-    <text x="100" y="180" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">PDF</text>
-    <rect x="130" y="150" width="40" height="50" fill="#90caf9" stroke="#1976d2" stroke-width="1" />
-    <text x="150" y="180" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">DOCX</text>
-    <rect x="180" y="150" width="40" height="50" fill="#90caf9" stroke="#1976d2" stroke-width="1" />
-    <text x="200" y="180" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">TXT</text>
-    <rect x="80"  y="210" width="40" height="50" fill="#90caf9" stroke="#1976d2" stroke-width="1" />
-    <text x="100" y="240" font-family="Arial, sans-serif" font-size="10" text-anchor="middle">CODE</text>
-    <rect x="130" y="210" width="40" height="50" fill="#90caf9" stroke="#1976d2" stroke-width="1" />
-    <text x="150" y="240" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">HTML</text>
-    <rect x="180" y="210" width="40" height="50" fill="#90caf9" stroke="#1976d2" stroke-width="1" />
-    <text x="200" y="240" font-family="Arial, sans-serif" font-size="10" text-anchor="middle">OTHER</text>
-  </g>
-
+  <rect x="50" y="100" width="200" height="180" rx="10" ry="10" fill="#bbdefb" stroke="#2196f3" stroke-width="2" />
+  <text x="150" y="130" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">Document Sources</text>
+  
+  <!-- Document icons -->
+  <rect x="80" y="150" width="40" height="50" fill="#90caf9" stroke="#1976d2" stroke-width="1" />
+  <text x="100" y="180" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">PDF</text>
+  
+  <rect x="130" y="150" width="40" height="50" fill="#90caf9" stroke="#1976d2" stroke-width="1" />
+  <text x="150" y="180" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">DOCX</text>
+  
+  <rect x="180" y="150" width="40" height="50" fill="#90caf9" stroke="#1976d2" stroke-width="1" />
+  <text x="200" y="180" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">TXT</text>
+  
+  <rect x="80" y="210" width="40" height="50" fill="#90caf9" stroke="#1976d2" stroke-width="1" />
+  <text x="100" y="240" font-family="Arial, sans-serif" font-size="10" text-anchor="middle">CODE</text>
+  
+  <rect x="130" y="210" width="40" height="50" fill="#90caf9" stroke="#1976d2" stroke-width="1" />
+  <text x="150" y="240" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">HTML</text>
+  
+  <rect x="180" y="210" width="40" height="50" fill="#90caf9" stroke="#1976d2" stroke-width="1" />
+  <text x="200" y="240" font-family="Arial, sans-serif" font-size="10" text-anchor="middle">OTHER</text>
+  
   <!-- Processing Pipeline -->
-  <rect id="processing-pipeline" x="300" y="100" width="400" height="410" rx="10" ry="10"
-        fill="#e8f5e9" stroke="#4caf50" stroke-width="2" class="section" />
-  <text x="500" y="130" font-family="Arial, sans-serif" font-size="18" font-weight="bold"
-        text-anchor="middle">Document Processing Pipeline</text>
-
+  <rect x="300" y="100" width="400" height="410" rx="10" ry="10" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" />
+  <text x="500" y="130" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">Document Processing Pipeline</text>
+  
   <!-- Text Extraction -->
-  <rect id="extraction" x="330" y="160" width="150" height="80" rx="5" ry="5"
-        fill="#c8e6c9" stroke="#388e3c" stroke-width="1" class="component" />
-  <text x="405" y="185" font-family="Arial, sans-serif" font-size="16" font-weight="bold"
-        text-anchor="middle">Text Extraction</text>
-  <text x="405" y="205" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">
-    Extract text content
-  </text>
-  <text x="405" y="220" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">
-    & metadata
-  </text>
-
+  <rect x="330" y="160" width="150" height="80" rx="5" ry="5" fill="#c8e6c9" stroke="#388e3c" stroke-width="1" />
+  <text x="405" y="185" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">Text Extraction</text>
+  <text x="405" y="205" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Extract text content</text>
+  <text x="405" y="220" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">& metadata</text>
+  
   <!-- Chunking -->
-  <rect id="chunking" x="520" y="160" width="150" height="80" rx="5" ry="5"
-        fill="#c8e6c9" stroke="#388e3c" stroke-width="1" class="component" />
-  <text x="595" y="185" font-family="Arial, sans-serif" font-size="16" font-weight="bold"
-        text-anchor="middle">Chunking</text>
-  <text x="595" y="205" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">
-    Split document into
-  </text>
-  <text x="595" y="220" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">
-    semantic chunks
-  </text>
-
+  <rect x="520" y="160" width="150" height="80" rx="5" ry="5" fill="#c8e6c9" stroke="#388e3c" stroke-width="1" />
+  <text x="595" y="185" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">Chunking</text>
+  <text x="595" y="205" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Split document into</text>
+  <text x="595" y="220" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">semantic chunks</text>
+  
+  <!-- Chunking Strategies -->
+  <rect x="520" y="260" width="150" height="100" rx="5" ry="5" fill="#a5d6a7" stroke="#388e3c" stroke-width="1" stroke-dasharray="5,3" />
+  <text x="595" y="280" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Chunking Strategies</text>
+  <text x="595" y="300" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">• Semantic</text>
+  <text x="595" y="315" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">• Code-aware</text>
+  <text x="595" y="330" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">• Token-based</text>
+  <text x="595" y="345" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">• Custom</text>
+  
   <!-- Embedding -->
-  <rect id="embedding" x="330" y="270" width="150" height="80" rx="5" ry="5"
-        fill="#c8e6c9" stroke="#388e3c" stroke-width="1" class="component" />
-  <text x="405" y="295" font-family="Arial, sans-serif" font-size="16" font-weight="bold"
-        text-anchor="middle">Embedding</text>
-  <text x="405" y="315" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">
-    Convert text to
-  </text>
-  <text x="405" y="330" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">
-    vector embeddings
-  </text>
-
+  <rect x="330" y="270" width="150" height="80" rx="5" ry="5" fill="#c8e6c9" stroke="#388e3c" stroke-width="1" />
+  <text x="405" y="295" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">Embedding</text>
+  <text x="405" y="315" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Convert text to</text>
+  <text x="405" y="330" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">vector embeddings</text>
+  
   <!-- Embedding Models -->
-  <rect id="embedding-models" x="330" y="370" width="150" height="120" rx="5" ry="5"
-        fill="#a5d6a7" stroke="#388e3c" stroke-width="1" stroke-dasharray="5,3"
-        class="component" />
-  <text x="405" y="390" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">
-    Embedding Models
-  </text>
-  <image id="logo-openai"
-         href="https://logowik.com/content/uploads/images/openai5002.jpg"
-         x="340" y="395"
-         width="30" height="30"
-         preserveAspectRatio="xMidYMid slice" />
-  <image id="logo-mistral"
-         href="https://the-decoder.com/wp-content/uploads/2024/02/mistral_ai_logo.png"
-         x="380" y="395"
-         width="30" height="30"
-         preserveAspectRatio="xMidYMid slice" />
-  <image id="logo-deepseek"
-         href="https://images.seeklogo.com/logo-png/61/2/deepseek-ai-logo-png_seeklogo-611415.png"
-         x="420" y="395"
-         width="60" height="20"
-         preserveAspectRatio="xMidYMid slice" />
-
+  <rect x="330" y="370" width="150" height="120" rx="5" ry="5" fill="#a5d6a7" stroke="#388e3c" stroke-width="1" stroke-dasharray="5,3" />
+  <text x="405" y="390" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Embedding Models</text>
+  
+  <!-- Embedding model logos/icons -->
+  <rect x="340" y="400" width="30" height="30" rx="5" fill="#ffffff" stroke="#388e3c" stroke-width="1" />
+  <text x="355" y="420" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" font-weight="bold">OpenAI</text>
+  
+  <rect x="375" y="400" width="30" height="30" rx="5" fill="#ffffff" stroke="#388e3c" stroke-width="1" />
+  <text x="390" y="420" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" font-weight="bold">Mistral</text>
+  
+  <rect x="410" y="400" width="30" height="30" rx="5" fill="#ffffff" stroke="#388e3c" stroke-width="1" />
+  <text x="425" y="420" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" font-weight="bold">DeepSeek</text>
+  
+  <text x="405" y="445" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">• Multi-provider support</text>
+  <text x="405" y="460" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">• Batch processing</text>
+  <text x="405" y="475" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">• Custom configurations</text>
+  
   <!-- Vector Database Section -->
-  <rect id="vector-stores" x="750" y="100" width="200" height="240" rx="10" ry="10"
-        fill="#e1f5fe" stroke="#03a9f4" stroke-width="2" class="section" />
-  <text x="850" y="130" font-family="Arial, sans-serif" font-size="18" font-weight="bold"
-        text-anchor="middle">Vector Stores</text>
-  <g id="vector-db-icons">
-    <rect x="780" y="150" width="140" height="30" rx="5" ry="5"
-          fill="#81d4fa" stroke="#0288d1" stroke-width="1" />
-    <text x="850" y="170" font-family="Arial, sans-serif" font-size="14" font-weight="bold"
-          text-anchor="middle">Pinecone</text>
-    <rect x="780" y="190" width="140" height="30" rx="5" ry="5"
-          fill="#b3e5fc" stroke="#0288d1" stroke-width="1" />
-    <text x="850" y="210" font-family="Arial, sans-serif" font-size="14"
-          text-anchor="middle">Qdrant</text>
-    <rect x="780" y="230" width="140" height="30" rx="5" ry="5"
-          fill="#b3e5fc" stroke="#0288d1" stroke-width="1" />
-    <text x="850" y="250" font-family="Arial, sans-serif" font-size="14"
-          text-anchor="middle">Weaviate</text>
-    <rect x="780" y="270" width="140" height="30" rx="5" ry="5"
-          fill="#81d4fa" stroke="#0288d1" stroke-width="1" />
-    <text x="850" y="290" font-family="Arial, sans-serif" font-size="14" font-weight="bold"
-          text-anchor="middle">Milvus</text>
-  </g>
-
-  <!-- Search Engine Section -->
-  <rect id="search-engine" x="750" y="330" width="200" height="150" rx="10" ry="10"
-        fill="#fff3e0" stroke="#ff9800" stroke-width="2" class="section" />
-  <text x="850" y="360" font-family="Arial, sans-serif" font-size="18" font-weight="bold"
-        text-anchor="middle">Search Engine</text>
-  <text x="850" y="390" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">
-    • Semantic search
-  </text>
-  <text x="850" y="415" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">
-    • Similarity matching
-  </text>
-  <text x="850" y="440" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">
-    • Vector retrieval
-  </text>
-  <text x="850" y="465" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">
-    • Metadata filtering
-  </text>
-
-  <!-- Arrowhead Marker Definition -->
+  <rect x="750" y="100" width="200" height="240" rx="10" ry="10" fill="#e1f5fe" stroke="#03a9f4" stroke-width="2" />
+  <text x="850" y="130" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">Vector Stores</text>
+  
+  <!-- Vector DB icons -->
+  <rect x="780" y="150" width="140" height="30" rx="5" ry="5" fill="#81d4fa" stroke="#0288d1" stroke-width="1" />
+  <text x="850" y="170" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Qdrant (default)</text>
+  
+  <rect x="780" y="190" width="140" height="30" rx="5" ry="5" fill="#b3e5fc" stroke="#0288d1" stroke-width="1" />
+  <text x="850" y="210" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Weaviate</text>
+  
+  <rect x="780" y="230" width="140" height="30" rx="5" ry="5" fill="#b3e5fc" stroke="#0288d1" stroke-width="1" />
+  <text x="850" y="250" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Milvus</text>
+  
+  <rect x="780" y="270" width="140" height="30" rx="5" ry="5" fill="#81d4fa" stroke="#0288d1" stroke-width="1" />
+  <text x="850" y="290" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Pinecone</text>
+  
+  <!-- Query & Search Section -->
+  <rect x="750" y="330" width="200" height="150" rx="10" ry="10" fill="#fff3e0" stroke="#ff9800" stroke-width="2" />
+  <text x="850" y="360" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">Search Engine</text>
+  <text x="850" y="390" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">• Semantic search</text>
+  <text x="850" y="415" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">• Similarity matching</text>
+  <text x="850" y="440" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">• Vector retrieval</text>
+  <text x="850" y="465" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">• Metadata filtering</text>
+  
+  <!-- UI Section -->
+  <rect x="300" y="520" width="650" height="240" rx="10" ry="10" fill="#f3e5f5" stroke="#9c27b0" stroke-width="2" />
+  <text x="625" y="550" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle">User Interface</text>
+  
+  <!-- Left UI Panel - Upload -->
+  <rect x="330" y="570" width="180" height="170" rx="5" ry="5" fill="#e1bee7" stroke="#8e24aa" stroke-width="1" />
+  <text x="420" y="590" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">Document Upload</text>
+  
+  <rect x="350" y="605" width="140" height="25" rx="3" ry="3" fill="#d1c4e9" stroke="#673ab7" stroke-width="1" />
+  <text x="420" y="622" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Choose Files</text>
+  
+  <rect x="350" y="640" width="140" height="80" rx="3" ry="3" fill="#d1c4e9" stroke="#673ab7" stroke-width="1" stroke-dasharray="3,2" />
+  <text x="420" y="680" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Drag & Drop Files</text>
+  <text x="420" y="695" font-family="Arial, sans-serif" font-size="10" text-anchor="middle">(PDF, DOCX, TXT, etc.)</text>
+  
+  <!-- Middle UI Panel - Processing -->
+  <rect x="530" y="570" width="180" height="170" rx="5" ry="5" fill="#e1bee7" stroke="#8e24aa" stroke-width="1" />
+  <text x="620" y="590" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">Processing Options</text>
+  
+  <rect x="550" y="605" width="140" height="25" rx="3" ry="3" fill="#d1c4e9" stroke="#673ab7" stroke-width="1" />
+  <text x="620" y="622" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Chunking Strategy</text>
+  
+  <rect x="550" y="640" width="140" height="25" rx="3" ry="3" fill="#d1c4e9" stroke="#673ab7" stroke-width="1" />
+  <text x="620" y="657" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Embedding Model</text>
+  
+  <rect x="550" y="675" width="140" height="25" rx="3" ry="3" fill="#d1c4e9" stroke="#673ab7" stroke-width="1" />
+  <text x="620" y="692" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Vector Store</text>
+  
+  <rect x="550" y="710" width="140" height="25" rx="3" ry="3" fill="#d1c4e9" stroke="#673ab7" stroke-width="1" />
+  <text x="620" y="727" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Process Documents</text>
+  
+  <!-- Right UI Panel - Search -->
+  <rect x="730" y="570" width="200" height="170" rx="5" ry="5" fill="#e1bee7" stroke="#8e24aa" stroke-width="1" />
+  <text x="830" y="590" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">Semantic Search</text>
+  
+  <rect x="750" y="605" width="160" height="30" rx="3" ry="3" fill="#d1c4e9" stroke="#673ab7" stroke-width="1" />
+  <text x="830" y="624" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">Search Query...</text>
+  
+  <rect x="750" y="645" width="160" height="85" rx="3" ry="3" fill="#d1c4e9" stroke="#673ab7" stroke-width="1" />
+  <text x="830" y="665" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Results</text>
+  <text x="830" y="685" font-family="Arial, sans-serif" font-size="10" text-anchor="middle">Document 1 (95% match)</text>
+  <text x="830" y="700" font-family="Arial, sans-serif" font-size="10" text-anchor="middle">Document 2 (87% match)</text>
+  <text x="830" y="715" font-family="Arial, sans-serif" font-size="10" text-anchor="middle">Document 3 (76% match)</text>
+  
+  <!-- Configuration Section -->
+  <rect x="50" y="520" width="220" height="240" rx="10" ry="10" fill="#ffecb3" stroke="#ffc107" stroke-width="2" />
+  <text x="160" y="550" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle">Configuration</text>
+  
+  <rect x="70" y="570" width="180" height="30" rx="3" ry="3" fill="#ffe082" stroke="#ffa000" stroke-width="1" />
+  <text x="160" y="590" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">API Keys</text>
+  
+  <rect x="70" y="610" width="180" height="30" rx="3" ry="3" fill="#ffe082" stroke="#ffa000" stroke-width="1" />
+  <text x="160" y="630" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Vector Store Settings</text>
+  
+  <rect x="70" y="650" width="180" height="30" rx="3" ry="3" fill="#ffe082" stroke="#ffa000" stroke-width="1" />
+  <text x="160" y="670" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Processing Parameters</text>
+  
+  <rect x="70" y="690" width="180" height="30" rx="3" ry="3" fill="#ffe082" stroke="#ffa000" stroke-width="1" />
+  <text x="160" y="710" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Environment Variables</text>
+  
+  <rect x="70" y="730" width="180" height="20" rx="3" ry="3" fill="#ffe082" stroke="#ffa000" stroke-width="1" />
+  <text x="160" y="745" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Save Configuration</text>
+  
+  <!-- Flow Arrows -->
+  <!-- Input to Processing -->
+  <path d="M250 190 H290 Q295 190 300 190 H310" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  
+  <!-- Text Extraction to Chunking -->
+  <path d="M480 200 H510" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  
+  <!-- Chunking to Embedding -->
+  <path d="M595 240 V255 H405 V270" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  
+  <!-- Embedding to Vector Store -->
+  <path d="M480 310 H715 Q730 310 745 310 H750" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  
+  <!-- Vector Store to Search -->
+  <path d="M850 340 V330" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+  
+  <!-- Arrowhead marker -->
   <defs>
     <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0 10 3.5 0 7" fill="#333" />
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
     </marker>
   </defs>
-
-  <!-- Enhanced Arrows -->
-  <path id="path1" d="M250 190 H290 Q295 190 300 190 H310"
-        class="arrow" marker-end="url(#arrowhead)" />
-  <path id="path2" d="M480 200 H510"
-        class="arrow" marker-end="url(#arrowhead)" />
-  <path id="path3" d="M595 240 V255 H405 V270"
-        class="arrow" marker-end="url(#arrowhead)" />
-  <path id="path4" d="M480 310 H715 Q730 310 745 310 H750"
-        class="arrow" marker-end="url(#arrowhead)" />
-  <path id="path5" d="M850 340 V330"
-        class="arrow" marker-end="url(#arrowhead)" />
-  <path id="path6" d="M850 480 V510 H830 V570"
-        class="arrow" stroke-dasharray="5,3" marker-end="url(#arrowhead)" />
-
-  <!-- Moving dots along arrows -->
-  <circle id="dot1" r="5" fill="#ff5722" opacity="0" />
-  <circle id="dot2" r="5" fill="#ff5722" opacity="0" />
-  <circle id="dot3" r="5" fill="#ff5722" opacity="0" />
-  <circle id="dot4" r="5" fill="#ff5722" opacity="0" />
-  <circle id="dot5" r="5" fill="#ff5722" opacity="0" />
-  <circle id="dot6" r="5" fill="#ff5722" opacity="0" />
-</svg> 
+</svg>
