@@ -1,5 +1,5 @@
-# DocVector: Intelligent Document Processing Agent
-[![Architecture Diagram](https://github.com/jabbir-doodle/DocVector-/raw/main/architecture.svg)](https://jabbir-doodle.github.io/DocVector-/index.html)
+# DocVector AI Agent: Intelligent Document Processing Agent
+[![Architecture Diagram](https://github.com/jabbir-doodle/DocVector-/raw/main/arc.png)](https://jabbir-doodle.github.io/DocVector-/raw/main/index.html)
 
 DocVector is an autonomous document‐processing agent that leverages multiple LLM providers to transform, analyze, and search through documents intelligently.
 
@@ -7,7 +7,7 @@ DocVector is an autonomous document‐processing agent that leverages multiple L
 
 ## 📐 Architecture Diagram
 Click the diagram below to launch the full interactive, animated SVG in your browser:
-[![DocVector Architecture](https://github.com/jabbir-doodle/DocVector-/raw/main/architecture.svg)](https://jabbir-doodle.github.io/DocVector-/index.html)
+[![DocVector Architecture](https://github.com/jabbir-doodle/DocVector-/raw/main/docvector.png)](https://jabbir-doodle.github.io/DocVector-/raw/main/index.html)
 
 Or open `index.html` directly to see the live GSAP–powered animation.
 
