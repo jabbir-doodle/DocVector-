@@ -24,6 +24,23 @@ class BaseEmbeddings(ABC):
         """Generate embeddings for a batch of texts."""
         pass
 
+class MistralEmbeddings(BaseEmbeddings):
+    """Mistral AI embeddings model."""
+    
+    def __init__(self, api_key: str, model: str = "mistral-embed"):
+        super().__init__(model=model, dimension=1024)  # Mistral's embedding dimension
+        self.api_key = api_key
+    
+    def embed_text(self, text: str) -> List[float]:
+        """Generate embeddings using Mistral AI's API."""
+        # TODO: Implement actual Mistral AI API call
+        # For now, return random embeddings
+        return list(np.random.randn(self.dimension))
+    
+    def embed_batch(self, texts: List[str]) -> List[List[float]]:
+        """Generate embeddings for a batch of texts."""
+        return [self.embed_text(text) for text in texts]
+
 class OpenAIEmbeddings(BaseEmbeddings):
     """OpenAI embeddings model."""
     
