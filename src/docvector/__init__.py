@@ -7,8 +7,9 @@ __version__ = "0.1.0"
 from .types import Document, Chunk, Metadata
 from .processor import DocumentProcessor
 from .chunking import BaseChunker, SemanticChunker, CodeChunker, TokenChunker
-from .embeddings import BaseEmbeddings, OpenAIEmbeddings, SentenceTransformerEmbeddings, CohereEmbeddings
+from .embeddings import BaseEmbeddings, OpenAIEmbeddings
 from .vector_stores import BaseVectorStore, QdrantStore, WeaviateStore, MilvusStore
+from .config import Config
 
 __all__ = [
     "Document",
@@ -21,8 +22,6 @@ __all__ = [
     "TokenChunker",
     "BaseEmbeddings",
     "OpenAIEmbeddings",
-    "SentenceTransformerEmbeddings",
-    "CohereEmbeddings",
     "BaseVectorStore",
     "QdrantStore",
     "WeaviateStore",

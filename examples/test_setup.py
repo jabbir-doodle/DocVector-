@@ -8,7 +8,7 @@ from pathlib import Path
 from docvector import (
     DocumentProcessor,
     SemanticChunker,
-    MistralEmbeddings,
+    OpenAIEmbeddings,
     QdrantStore,
     Config
 )
@@ -27,12 +27,11 @@ def create_test_document(directory: str) -> str:
     return str(test_file)
 
 def test_embeddings():
-    """Test Mistral AI embeddings."""
-    print("\nTesting Mistral AI embeddings...")
+    """Test OpenAI embeddings."""
+    print("\nTesting OpenAI embeddings...")
     try:
-        embeddings = MistralEmbeddings(
-            api_key=Config.MISTRAL_API_KEY,
-            model=Config.MISTRAL_MODEL
+        embeddings = OpenAIEmbeddings(
+            api_key=Config.OPENAI_API_KEY
         )
         test_text = "This is a test for embeddings."
         result = embeddings.embed_text(test_text)
@@ -66,9 +65,8 @@ def test_document_processing():
         # Initialize processor
         processor = DocumentProcessor(
             chunker=SemanticChunker(),
-            embeddings=MistralEmbeddings(
-                api_key=Config.MISTRAL_API_KEY,
-                model=Config.MISTRAL_MODEL
+            embeddings=OpenAIEmbeddings(
+                api_key=Config.OPENAI_API_KEY
             )
         )
         

@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocVector AI - Intelligent Document Processing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+
+<body>
+    <div class="notifications-container" id="notificationsContainer"></div>
+
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="logo-text">DocVector</div>
+                </div>
+                <button class="toggle-btn" id="toggleSidebar">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-tab="upload">
+                    <span class="nav-icon"><i class="fas fa-upload"></i></span>
+                    <span class="nav-text">Upload</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="process">
+                    <span class="nav-icon"><i class="fas fa-microchip"></i></span>
+                    <span class="nav-text">Process</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="search">
+                    <span class="nav-icon"><i class="fas fa-search"></i></span>
+                    <span class="nav-text">Search</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="vectors">
+                    <span class="nav-icon"><i class="fas fa-project-diagram"></i></span>
+                    <span class="nav-text">Vectors</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="settings">
+                    <span class="nav-icon"><i class="fas fa-cog"></i></span>
+                    <span class="nav-text">Settings</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-avatar">JB</div>
+                <div class="user-info">
+                    <div class="user-name">Jabbir Basha</div>
+                    <div class="user-role">Admin</div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="mobile-nav">
+            <a href="#" class="mobile-nav-item active" data-tab="upload">
+                <i class="fas fa-upload mobile-nav-icon"></i>
+                <span class="mobile-nav-text">Upload</span>
+            </a>
+            <a href="#" class="mobile-nav-item" data-tab="process">
+                <i class="fas fa-microchip mobile-nav-icon"></i>
+                <span class="mobile-nav-text">Process</span>
+            </a>
+            <a href="#" class="mobile-nav-item" data-tab="search">
+                <i class="fas fa-search mobile-nav-icon"></i>
+                <span class="mobile-nav-text">Search</span>
+            </a>
+            <a href="#" class="mobile-nav-item" data-tab="vectors">
+                <i class="fas fa-project-diagram mobile-nav-icon"></i>
+                <span class="mobile-nav-text">Vectors</span>
+            </a>
+        </div>
+
+        <main class="main">
+            <header class="header">
+                <div class="header-title">
+                    <button class="mobile-nav-toggle" id="mobileNavToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="page-title" id="pageTitle">Document Upload</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon" id="themeToggleIcon"></i>
+                    </button>
+                    <button class="action-btn">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+            </header>
+
+            <div class="content">
+                <div class="tab-content active" id="upload-tab">
+                    <div class="card card-gradient">
+                        <div class="hero-card">
+                            <h2 class="hero-title">Intelligent Document Processing</h2>
+                            <p class="hero-subtitle">Transform your documents into AI-powered vector embeddings for
+                                semantic search, analysis and insight extraction</p>
+
+                            <div class="upload-area" id="dropZone">
+                                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                                <p class="upload-text">Drag and drop your documents</p>
+                                <p class="upload-hint">or click to select files (PDF, DOCX, TXT, HTML)</p>
+                                <input type="file" id="fileInput" style="display: none;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <i class="fas fa-file-alt card-title-icon"></i>
+                                    Document Sources
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="format-grid">
+                                    <div class="format-badge">PDF</div>
+                                    <div class="format-badge">DOCX</div>
+                                    <div class="format-badge">TXT</div>
+                                    <div class="format-badge">HTML</div>
+                                    <div class="format-badge">CODE</div>
+                                    <div class="format-badge">JSON</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <i class="fas fa-microchip card-title-icon"></i>
+                                    Embedding Providers
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="option-list">
+                                    <div class="option-item" data-provider="openai">
+                                        <div class="option-item-left">
+                                            <div class="option-color openai-color"></div>
+                                            <span>OpenAI</span>
+                                        </div>
+                                    </div>
+                                    <div class="option-item selected" data-provider="mistral">
+                                        <div class="option-item-left">
+                                            <div class="option-color mistral-color"></div>
+                                            <span>Mistral AI</span>
+                                        </div>
+                                        <i class="fas fa-bolt" style="color: #facc15;"></i>
+                                    </div>
+                                    <div class="option-item" data-provider="deepseek">
+                                        <div class="option-item-left">
+                                            <div class="option-color deepseek-color"></div>
+                                            <span>DeepSeek</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <i class="fas fa-database card-title-icon"></i>
+                                    Vector Stores
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="option-list">
+                                    <div class="option-item selected" data-store="pinecone">
+                                        <div class="option-item-left">
+                                            <div class="option-color pinecone-color"></div>
+                                            <span>Pinecone</span>
+                                        </div>
+                                        <i class="fas fa-bolt" style="color: #facc15;"></i>
+                                    </div>
+                                    <div class="option-item" data-store="qdrant">
+                                        <div class="option-item-left">
+                                            <div class="option-color qdrant-color"></div>
+                                            <span>Qdrant</span>
+                                        </div>
+                                    </div>
+                                    <div class="option-item" data-store="weaviate">
+                                        <div class="option-item-left">
+                                            <div class="option-color weaviate-color"></div>
+                                            <span>Weaviate</span>
+                                        </div>
+                                    </div>
+                                    <div class="option-item" data-store="milvus">
+                                        <div class="option-item-left">
+                                            <div class="option-color milvus-color"></div>
+                                            <span>Milvus</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Processing Pipeline</h3>
+                        </div>
+                        <div class="pipeline-container">
+                            <div class="pipeline-track">
+                                <div class="pipeline-progress"></div>
+                            </div>
+
+                            <div class="pipeline-steps">
+                                <div class="pipeline-step completed">
+                                    <div class="step-icon">
+                                        <i class="fas fa-file-alt"></i>
+                                    </div>
+                                    <div class="step-label">Text Extraction</div>
+                                </div>
+
+                                <div class="pipeline-step completed">
+                                    <div class="step-icon">
+                                        <i class="fas fa-cube"></i>
+                                    </div>
+                                    <div class="step-label">Chunking</div>
+                                </div>
+
+                                <div class="pipeline-step active">
+                                    <div class="step-icon">
+                                        <i class="fas fa-microchip"></i>
+                                    </div>
+                                    <div class="step-label">Embedding</div>
+                                </div>
+
+                                <div class="pipeline-step">
+                                    <div class="step-icon">
+                                        <i class="fas fa-database"></i>
+                                    </div>
+                                    <div class="step-label">Vector Storage</div>
+                                </div>
+
+                                <div class="pipeline-step">
+                                    <div class="step-icon">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                    <div class="step-label">Search Index</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-panel" id="resultPanel">
+                        <div class="result-header">
+                            <h3 class="result-title" id="resultTitle">File uploaded successfully</h3>
+                        </div>
+                        <div class="result-body">
+                            <div class="document-details">
+                                <div class="detail-item">
+                                    <div class="detail-label">Title:</div>
+                                    <div class="detail-value" id="docTitle">sample-document.pdf</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">File Type:</div>
+                                    <div class="detail-value" id="docType">PDF</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">File Size:</div>
+                                    <div class="detail-value" id="docSize">2.4 MB</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">Created:</div>
+                                    <div class="detail-value" id="docCreated">May 7, 2025, 10:23 AM</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">Modified:</div>
+                                    <div class="detail-value" id="docModified">May 7, 2025, 10:23 AM</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">Chunks:</div>
+                                    <div class="detail-value" id="docChunks">12</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">Document ID:</div>
+                                    <div class="detail-value" id="docId">f8a72e9b5d3c1a0e</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="process-tab" style="display:none;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Document Processing</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="processing-controls">
+                                <p class="mb-4">Configure processing options and start processing your document.</p>
+
+                                <div class="process-options">
+                                    <div class="process-option">
+                                        <label class="process-label">Chunking Strategy</label>
+                                        <select id="chunkingStrategy" class="process-select">
+                                            <option value="semantic">Semantic Chunking</option>
+                                            <option value="token">Token-based Chunking</option>
+                                            <option value="paragraph">Paragraph Chunking</option>
+                                            <option value="custom">Custom Chunking</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="process-option">
+                                        <label class="process-label">Embedding Model</label>
+                                        <div class="process-option-value" id="selectedEmbeddingModel">Mistral AI</div>
+                                    </div>
+
+                                    <div class="process-option">
+                                        <label class="process-label">Vector Store</label>
+                                        <div class="process-option-value" id="selectedVectorStore">Pinecone</div>
+                                    </div>
+
+                                    <div class="process-option">
+                                        <label class="process-label">Current Document</label>
+                                        <div class="process-option-value" id="currentDocument">Not selected</div>
+                                    </div>
+                                </div>
+
+                                <div class="process-actions">
+                                    <button id="startProcessingBtn" class="btn btn-primary">
+                                        <i class="fas fa-play"></i> Start Processing
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="visualization-container" id="processingVisualization">
+                        <h3 class="visualization-title">Processing Pipeline Visualization</h3>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="search-tab" style="display:none;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Semantic Search</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="search-form">
+                                <div class="search-input-container">
+                                    <input type="text" id="searchQuery" class="search-input"
+                                        placeholder="Enter your search query...">
+                                    <button id="searchBtn" class="search-button">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+
+                                <div class="search-options">
+                                    <div class="search-option">
+                                        <label>Vector Store</label>
+                                        <div class="search-option-value" id="searchVectorStore">Pinecone</div>
+                                    </div>
+
+                                    <div class="search-option">
+                                        <label>Max Results</label>
+                                        <select id="maxResults" class="search-select">
+                                            <option value="3">3 results</option>
+                                            <option value="5" selected>5 results</option>
+                                            <option value="10">10 results</option>
+                                            <option value="20">20 results</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="search-option">
+                                        <label>Similarity Threshold</label>
+                                        <input type="range" id="similarityThreshold" min="0" max="100" value="70"
+                                            class="search-range">
+                                        <div class="range-value"><span id="thresholdValue">70</span>%</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="searchResults" class="search-results-container" style="display:none;">
+                                <h3 class="results-title">Search Results</h3>
+                                <div class="results-info">
+                                    <div class="results-count"><span id="resultsCount">0</span> results found</div>
+                                    <div class="results-time">in <span id="searchTime">0</span> seconds</div>
+                                </div>
+
+                                <div id="resultsList" class="results-list">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="vectors-tab" style="display:none;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Vector Store Management</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="vector-stats">
+                                <div class="vector-stat-card">
+                                    <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
+                                    <div class="stat-value" id="totalDocuments">0</div>
+                                    <div class="stat-label">Documents</div>
+                                </div>
+
+                                <div class="vector-stat-card">
+                                    <div class="stat-icon"><i class="fas fa-puzzle-piece"></i></div>
+                                    <div class="stat-value" id="totalChunks">0</div>
+                                    <div class="stat-label">Chunks</div>
+                                </div>
+
+                                <div class="vector-stat-card">
+                                    <div class="stat-icon"><i class="fas fa-database"></i></div>
+                                    <div class="stat-value" id="vectorStore">Pinecone</div>
+                                    <div class="stat-label">Vector Store</div>
+                                </div>
+
+                                <div class="vector-stat-card">
+                                    <div class="stat-icon"><i class="fas fa-microchip"></i></div>
+                                    <div class="stat-value" id="embeddingModel">Mistral AI</div>
+                                    <div class="stat-label">Embedding Model</div>
+                                </div>
+                            </div>
+
+                            <div class="vector-actions">
+                                <button class="btn btn-secondary" id="refreshVectorsBtn">
+                                    <i class="fas fa-sync-alt"></i> Refresh Stats
+                                </button>
+                                <button class="btn btn-danger" id="clearVectorsBtn">
+                                    <i class="fas fa-trash-alt"></i> Clear Vector Store
+                                </button>
+                            </div>
+
+                            <h4 class="section-title">Recent Documents</h4>
+                            <div class="document-list" id="documentList">
+                                <div class="empty-state">
+                                    <i class="fas fa-search empty-icon"></i>
+                                    <p>No documents found in vector store</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="settings-tab" style="display:none;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Settings</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="settings-section">
+                                <h4 class="settings-title">API Configuration</h4>
+
+                                <div class="setting-item">
+                                    <label class="setting-label">OpenAI API Key</label>
+                                    <div class="setting-input-container">
+                                        <input type="password" id="openaiKey" class="setting-input"
+                                            placeholder="Enter OpenAI API key">
+                                        <button class="toggle-visibility-btn"><i class="fas fa-eye"></i></button>
+                                    </div>
+                                </div>
+
+                                <div class="setting-item">
+                                    <label class="setting-label">Mistral AI API Key</label>
+                                    <div class="setting-input-container">
+                                        <input type="password" id="mistralKey" class="setting-input"
+                                            placeholder="Enter Mistral AI API key">
+                                        <button class="toggle-visibility-btn"><i class="fas fa-eye"></i></button>
+                                    </div>
+                                </div>
+
+                                <div class="setting-item">
+                                    <label class="setting-label">DeepSeek API Key</label>
+                                    <div class="setting-input-container">
+                                        <input type="password" id="deepseekKey" class="setting-input"
+                                            placeholder="Enter DeepSeek API key">
+                                        <button class="toggle-visibility-btn"><i class="fas fa-eye"></i></button>
+                                    </div>
+                                </div>
+
+                                <div class="setting-item">
+                                    <label class="setting-label">Pinecone API Key</label>
+                                    <div class="setting-input-container">
+                                        <input type="password" id="pineconeKey" class="setting-input"
+                                            placeholder="Enter Pinecone API key">
+                                        <button class="toggle-visibility-btn"><i class="fas fa-eye"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="settings-section">
+                                <h4 class="settings-title">Processing Options</h4>
+
+                                <div class="setting-item">
+                                    <label class="setting-label">Default Embedding Provider</label>
+                                    <select id="defaultEmbeddingProvider" class="setting-select">
+                                        <option value="openai">OpenAI</option>
+                                        <option value="mistral" selected>Mistral AI</option>
+                                        <option value="deepseek">DeepSeek</option>
+                                    </select>
+                                </div>
+
+                                <div class="setting-item">
+                                    <label class="setting-label">Default Vector Store</label>
+                                    <select id="defaultVectorStore" class="setting-select">
+                                        <option value="pinecone" selected>Pinecone</option>
+                                        <option value="qdrant">Qdrant</option>
+                                        <option value="weaviate">Weaviate</option>
+                                        <option value="milvus">Milvus</option>
+                                    </select>
+                                </div>
+
+                                <div class="setting-item">
+                                    <label class="setting-label">Default Chunking Strategy</label>
+                                    <select id="defaultChunkingStrategy" class="setting-select">
+                                        <option value="semantic" selected>Semantic Chunking</option>
+                                        <option value="token">Token-based Chunking</option>
+                                        <option value="paragraph">Paragraph Chunking</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="settings-actions">
+                                <button id="saveSettingsBtn" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Save Settings
+                                </button>
+                                <button id="resetSettingsBtn" class="btn btn-secondary">
+                                    <i class="fas fa-undo"></i> Reset to Defaults
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        class DocVectorVisualization {
+            constructor(container) {
+                this.container = container;
+                this.currentStep = 0;
+                this.maxSteps = 4;
+                this.isPlaying = false;
+                this.animationInterval = null;
+
+                this.documentContent = `# DocVector AI Agent
+
+DocVector is an autonomous document processing agent that leverages 
+multiple LLM providers to transform, analyze, and search through 
+documents intelligently.
+
+## Key Features
+- Intelligent text chunking
+- Multi-format support
+- Automatic metadata extraction
+- Multi-Provider LLM Integration`;
+
+                this.chunks = [
+                    "# DocVector AI Agent\nDocVector is an autonomous document processing agent that leverages multiple LLM providers",
+                    "to transform, analyze, and search through documents intelligently.\n\n## Key Features",
+                    "- Intelligent text chunking\n- Multi-format support\n- Automatic metadata extraction\n- Multi-Provider LLM Integration"
+                ];
+
+                this.embeddings = [
+                    { x: 0.2, y: 0.7, text: this.chunks[0] },
+                    { x: 0.4, y: 0.3, text: this.chunks[1] },
+                    { x: 0.8, y: 0.5, text: this.chunks[2] }
+                ];
+
+                this.createVisualizations();
+                this.updateVisualization();
+            }
+
+            createVisualizations() {
+                const vizGrid = document.createElement('div');
+                vizGrid.className = 'viz-grid';
+                this.container.appendChild(vizGrid);
+
+                const docPanel = document.createElement('div');
+                docPanel.className = 'viz-panel';
+                docPanel.innerHTML = `
+                    <div class="viz-panel-header">
+                        <h3><i class="fas fa-file-alt"></i> Original Document</h3>
+                    </div>
+                    <div class="viz-panel-body" id="documentPanel"></div>
+                `;
+                vizGrid.appendChild(docPanel);
+
+                const chunksPanel = document.createElement('div');
+                chunksPanel.className = 'viz-panel';
+                chunksPanel.innerHTML = `
+                    <div class="viz-panel-header">
+                        <h3><i class="fas fa-puzzle-piece"></i> Semantic Chunks</h3>
+                    </div>
+                    <div class="viz-panel-body" id="chunksPanel"></div>
+                `;
+                vizGrid.appendChild(chunksPanel);
+
+                const embeddingsPanel = document.createElement('div');
+                embeddingsPanel.className = 'viz-panel';
+                embeddingsPanel.innerHTML = `
+                    <div class="viz-panel-header">
+                        <h3><i class="fas fa-project-diagram"></i> Vector Embeddings</h3>
+                    </div>
+                    <div class="viz-panel-body" id="embeddingsPanel"></div>
+                `;
+                vizGrid.appendChild(embeddingsPanel);
+
+                const progressBar = document.createElement('div');
+                progressBar.className = 'viz-progress';
+                progressBar.innerHTML = `
+                    <div class="viz-progress-track">
+                        <div class="viz-progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="viz-steps" id="progressSteps"></div>
+                `;
+                this.container.insertBefore(progressBar, vizGrid);
+
+                const stepsContainer = document.getElementById('progressSteps');
+                const steps = [
+                    { icon: 'fas fa-file-alt', label: 'Document' },
+                    { icon: 'fas fa-puzzle-piece', label: 'Chunking' },
+                    { icon: 'fas fa-microchip', label: 'Embedding' },
+                    { icon: 'fas fa-database', label: 'Storage' },
+                    { icon: 'fas fa-search', label: 'Search Ready' }
+                ];
+
+                steps.forEach((step, index) => {
+                    const stepEl = document.createElement('div');
+                    stepEl.className = 'viz-step';
+                    stepEl.dataset.step = index;
+                    stepEl.innerHTML = `
+                        <div class="viz-step-icon"><i class="${step.icon}"></i></div>
+                        <div class="viz-step-label">${step.label}</div>
+                    `;
+                    stepsContainer.appendChild(stepEl);
+                });
+
+                const controlsContainer = document.createElement('div');
+                controlsContainer.className = 'viz-controls';
+                controlsContainer.innerHTML = `
+                    <button id="vizPlayBtn" class="viz-btn primary">Play Animation</button>
+                    <button id="vizStepBtn" class="viz-btn">Step Forward</button>
+                    <button id="vizResetBtn" class="viz-btn">Reset</button>
+                `;
+                this.container.appendChild(controlsContainer);
+
+                document.getElementById('vizPlayBtn').addEventListener('click', () => {
+                    if (this.isPlaying) {
+                        this.pause();
+                        document.getElementById('vizPlayBtn').textContent = 'Play Animation';
+                    } else {
+                        this.play();
+                        document.getElementById('vizPlayBtn').textContent = 'Pause';
+                    }
+                });
+
+                document.getElementById('vizStepBtn').addEventListener('click', () => {
+                    document.getElementById('vizPlayBtn').textContent = 'Play Animation';
+                    this.stepForward();
+                });
+
+                document.getElementById('vizResetBtn').addEventListener('click', () => {
+                    document.getElementById('vizPlayBtn').textContent = 'Play Animation';
+                    this.reset();
+                });
+            }
+
+            updateVisualization() {
+                const progressFill = document.getElementById('progressFill');
+                progressFill.style.width = `${(this.currentStep / this.maxSteps) * 100}%`;
+
+                const steps = document.querySelectorAll('.viz-step');
+                steps.forEach((step, index) => {
+                    step.classList.remove('active', 'completed');
+                    if (index === this.currentStep) {
+                        step.classList.add('active');
+                    } else if (index < this.currentStep) {
+                        step.classList.add('completed');
+                    }
+                });
+
+                const documentPanel = document.getElementById('documentPanel');
+                if (this.currentStep >= 0) {
+                    documentPanel.innerHTML = `<pre class="doc-content">${this.documentContent}</pre>`;
+                    documentPanel.parentElement.classList.add('active');
+                } else {
+                    documentPanel.innerHTML = '';
+                    documentPanel.parentElement.classList.remove('active');
+                }
+
+                const chunksPanel = document.getElementById('chunksPanel');
+                if (this.currentStep >= 1) {
+                    chunksPanel.innerHTML = this.chunks.map((chunk, i) =>
+                        `<div class="chunk" data-index="${i}"><div class="chunk-label">Chunk ${i + 1}</div><pre>${chunk}</pre></div>`
+                    ).join('');
+
+                    setTimeout(() => {
+                        document.querySelectorAll('.chunk').forEach(el => {
+                            el.classList.add('visible');
+                        });
+                    }, 100);
+
+                    chunksPanel.parentElement.classList.add('active');
+                } else {
+                    chunksPanel.innerHTML = '';
+                    chunksPanel.parentElement.classList.remove('active');
+                }
+
+                const embeddingsPanel = document.getElementById('embeddingsPanel');
+                if (this.currentStep >= 2) {
+                    embeddingsPanel.innerHTML = '<div class="embedding-space"></div>';
+                    const embeddingSpace = embeddingsPanel.querySelector('.embedding-space');
+
+                    setTimeout(() => {
+                        this.embeddings.forEach((emb, i) => {
+                            const vector = document.createElement('div');
+                            vector.className = 'vector';
+                            vector.style.left = `${emb.x * 100}%`;
+                            vector.style.top = `${emb.y * 100}%`;
+                            vector.dataset.index = i;
+
+                            if (i > 0) {
+                                const prevEmb = this.embeddings[i - 1];
+                                const line = document.createElement('div');
+                                line.className = 'vector-line';
+
+                                const angle = Math.atan2(emb.y - prevEmb.y, emb.x - prevEmb.x);
+                                const distance = Math.sqrt(
+                                    Math.pow(emb.x - prevEmb.x, 2) +
+                                    Math.pow(emb.y - prevEmb.y, 2)
+                                ) * 100;
+
+                                line.style.width = `${distance}%`;
+                                line.style.left = `${prevEmb.x * 100}%`;
+                                line.style.top = `${prevEmb.y * 100}%`;
+                                line.style.transform = `rotate(${angle}rad)`;
+                                line.style.transformOrigin = 'left center';
+
+                                embeddingSpace.appendChild(line);
+                            }
+
+                            embeddingSpace.appendChild(vector);
+
+                            const tooltip = document.createElement('div');
+                            tooltip.className = 'vector-tooltip';
+                            tooltip.innerHTML = `<pre>${this.chunks[i]}</pre>`;
+                            vector.appendChild(tooltip);
+
+                            setTimeout(() => {
+                                vector.classList.add('visible');
+                                if (i > 0) {
+                                    document.querySelectorAll('.vector-line')[i - 1].classList.add('visible');
+                                }
+                            }, i * 200);
+                        });
+                    }, 300);
+
+                    embeddingsPanel.parentElement.classList.add('active');
+                } else {
+                    embeddingsPanel.innerHTML = '';
+                    embeddingsPanel.parentElement.classList.remove('active');
+                }
+
+                if (this.currentStep >= 3) {
+                    const dbContainer = document.createElement('div');
+                    dbContainer.className = 'db-container';
+                    dbContainer.innerHTML = `
+                        <div class="db-icon"><i class="fas fa-database"></i></div>
+                        <div class="db-label">Vectors stored in database</div>
+                        <div class="db-items">
+                            ${this.chunks.map((_, i) => `<div class="db-item" data-index="${i}"></div>`).join('')}
+                        </div>
+                    `;
+                    embeddingsPanel.appendChild(dbContainer);
+
+                    setTimeout(() => {
+                        document.querySelectorAll('.db-item').forEach((el, i) => {
+                            setTimeout(() => {
+                                el.classList.add('stored');
+                            }, i * 200);
+                        });
+                    }, 500);
+                }
+
+                if (this.currentStep >= 4) {
+                    const searchContainer = document.createElement('div');
+                    searchContainer.className = 'search-container';
+                    searchContainer.innerHTML = `
+                        <div class="search-icon"><i class="fas fa-search"></i></div>
+                        <div class="search-label">Search index ready</div>
+                        <div class="search-demo">
+                            <div class="search-input">
+                                <input type="text" placeholder="Sample query: document processing" disabled>
+                                <button disabled><i class="fas fa-search"></i></button>
+                            </div>
+                            <div class="search-results">
+                                <div class="search-result">
+                                    <div class="result-score">92% match</div>
+                                    <div class="result-text">${this.chunks[0]}</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    const resultsContainer = document.createElement('div');
+                    resultsContainer.className = 'search-results-container';
+                    resultsContainer.appendChild(searchContainer);
+
+                    this.container.appendChild(resultsContainer);
+                } else {
+                    const existingSearch = document.querySelector('.search-results-container');
+                    if (existingSearch) {
+                        existingSearch.remove();
+                    }
+                }
+            }
+
+            play() {
+                this.isPlaying = true;
+                this.animationInterval = setInterval(() => {
+                    if (this.currentStep < this.maxSteps) {
+                        this.currentStep++;
+                        this.updateVisualization();
+                    } else {
+                        this.pause();
+                        document.getElementById('vizPlayBtn').textContent = 'Play Animation';
+                    }
+                }, 2000);
+            }
+
+            pause() {
+                this.isPlaying = false;
+                clearInterval(this.animationInterval);
+            }
+
+            stepForward() {
+                this.pause();
+                if (this.currentStep < this.maxSteps) {
+                    this.currentStep++;
+                    this.updateVisualization();
+                }
+            }
+
+            reset() {
+                this.pause();
+                this.currentStep = 0;
+                this.updateVisualization();
+
+                const existingSearch = document.querySelector('.search-results-container');
+                if (existingSearch) {
+                    existingSearch.remove();
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
